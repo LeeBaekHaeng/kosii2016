@@ -27,6 +27,30 @@
 	</c:forEach>
 </ul>
 
+<ol>
+	<c:forEach items="${selectCmmCodeDetails}" var="item" varStatus="i">
+		<li>${item.key} ${item.value}</li>
+	</c:forEach>
+</ol>
+
+<ol>
+	<c:forEach items="${selectCmmCodeDetails}" var="item" varStatus="i">
+		<li>${item.key}
+			<ol>
+				<c:forEach items="${item.value}" var="item2" varStatus="i2">
+					<li>${item2.code} ${item2.codeNm}</li>
+				</c:forEach>
+			</ol>
+		</li>
+	</c:forEach>
+</ol>
+
+<ol>
+	<c:forEach items="${selectCmmCodeDetails.COM003}" var="item" varStatus="i">
+		<li>${item.code} ${item.codeNm}</li>
+	</c:forEach>
+</ol>
+
 	<c:if test="${loginVO != null}">
 		${loginVO.name }님 환영합니다. <a href="${pageContext.request.contextPath }/uat/uia/actionLogout.do">로그아웃</a>
 	</c:if>

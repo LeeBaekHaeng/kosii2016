@@ -28,6 +28,7 @@ package egovframework.com.cmm.web;
  */
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -96,11 +97,12 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		model.addAttribute("loginVO", loginVO);
 
 		selectCmmCodeDetail(model);
+		selectCmmCodeDetails(model);
 
 		return "egovframework/com/cmm/EgovUnitContent";
 	}
 
-	public void selectCmmCodeDetail(ModelMap model) {
+	private void selectCmmCodeDetail(ModelMap model) {
 		ComDefaultCodeVO vo = new ComDefaultCodeVO();
 		vo.setCodeId("COM001");
 
@@ -113,6 +115,30 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		}
 
 		model.addAttribute("selectCmmCodeDetail", selectCmmCodeDetail);
+	}
+
+	private void selectCmmCodeDetails(ModelMap model) {
+		List<ComDefaultCodeVO> voList = new ArrayList<>();
+
+		ComDefaultCodeVO vo = null;
+
+		vo = new ComDefaultCodeVO();
+		vo.setCodeId("COM001");
+		voList.add(vo);
+
+		vo = new ComDefaultCodeVO();
+		vo.setCodeId("COM003");
+		voList.add(vo);
+
+		Map<String, List<CmmnDetailCode>> selectCmmCodeDetails = null;
+
+		try {
+			selectCmmCodeDetails = egovCmmUseService.selectCmmCodeDetails(voList);
+		} catch (Exception e) {
+			LOGGER.error("e=" + e);
+		}
+
+		model.addAttribute("selectCmmCodeDetails", selectCmmCodeDetails);
 	}
 
 	@RequestMapping("/EgovLeft.do")
