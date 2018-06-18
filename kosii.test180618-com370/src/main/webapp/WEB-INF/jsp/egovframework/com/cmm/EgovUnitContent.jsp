@@ -8,6 +8,25 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<ol>
+	<c:forEach items="${selectCmmCodeDetail}" var="item" varStatus="i">
+		<li>${item.code} ${item.codeNm}</li>
+	</c:forEach>
+</ol>
+
+<ul>
+	<c:forEach items="${selectCmmCodeDetail}" var="item" varStatus="i">
+		<li>${i.index}. ${item.code} ${item.codeNm}</li>
+	</c:forEach>
+</ul>
+
+<ul>
+	<c:forEach items="${selectCmmCodeDetail}" var="item" varStatus="i">
+		<li>${i.count}. ${item.code} ${item.codeNm}</li>
+	</c:forEach>
+</ul>
+
 	<c:if test="${loginVO != null}">
 		${loginVO.name }님 환영합니다. <a href="${pageContext.request.contextPath }/uat/uia/actionLogout.do">로그아웃</a>
 	</c:if>
