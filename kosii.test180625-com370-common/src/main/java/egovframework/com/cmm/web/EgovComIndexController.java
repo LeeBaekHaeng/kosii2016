@@ -140,6 +140,18 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		model.addAttribute("selectCmmCodeDetails", selectCmmCodeDetails);
 	}
 
+	@RequestMapping("/EgovContent2.do")
+	public String setContent2(ModelMap model) {
+
+		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+		model.addAttribute("loginVO", loginVO);
+
+		selectCmmCodeDetail(model);
+		selectCmmCodeDetails(model);
+
+		return "egovframework/com/cmm/EgovUnitContent2";
+	}
+
 	@RequestMapping("/EgovLeft.do")
 	public String setLeftMenu(ModelMap model) {
 
