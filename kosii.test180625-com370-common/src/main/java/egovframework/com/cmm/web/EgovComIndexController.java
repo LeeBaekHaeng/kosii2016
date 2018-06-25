@@ -28,23 +28,29 @@ package egovframework.com.cmm.web;
  */
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
-import egovframework.com.cmm.IncludedCompInfoVO;
-import egovframework.com.cmm.LoginVO;
-import egovframework.com.cmm.annotation.IncludedInfo;
-import egovframework.com.cmm.util.EgovUserDetailsHelper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import egovframework.com.cmm.ComDefaultCodeVO;
+import egovframework.com.cmm.IncludedCompInfoVO;
+import egovframework.com.cmm.LoginVO;
+import egovframework.com.cmm.annotation.IncludedInfo;
+import egovframework.com.cmm.service.CmmnDetailCode;
+import egovframework.com.cmm.service.EgovCmmUseService;
+import egovframework.com.cmm.util.EgovUserDetailsHelper;
 
 @Controller
 public class EgovComIndexController implements ApplicationContextAware, InitializingBean {
@@ -55,11 +61,17 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 
 	private Map<Integer, IncludedCompInfoVO> map;
 
-	public void afterPropertiesSet() throws Exception {}
+	@Autowired
+	private EgovCmmUseService egovCmmUseService;
 
+	@Override
+	public void afterPropertiesSet() throws Exception {
+	}
+
+	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
-		
+
 		LOGGER.info("EgovComIndexController setApplicationContext method has called!");
 	}
 
@@ -84,7 +96,48 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		model.addAttribute("loginVO", loginVO);
 
+		selectCmmCodeDetail(model);
+		selectCmmCodeDetails(model);
+
 		return "egovframework/com/cmm/EgovUnitContent";
+	}
+
+	private void selectCmmCodeDetail(ModelMap model) {
+		ComDefaultCodeVO vo = new ComDefaultCodeVO();
+		vo.setCodeId("COM001");
+
+		List<CmmnDetailCode> selectCmmCodeDetail = null;
+
+		try {
+			selectCmmCodeDetail = egovCmmUseService.selectCmmCodeDetail(vo);
+		} catch (Exception e) {
+			LOGGER.error("e=" + e);
+		}
+
+		model.addAttribute("selectCmmCodeDetail", selectCmmCodeDetail);
+	}
+
+	private void selectCmmCodeDetails(ModelMap model) {
+		List<ComDefaultCodeVO> voList = new ArrayList<>();
+		ComDefaultCodeVO vo = null;
+
+		vo = new ComDefaultCodeVO();
+		vo.setCodeId("COM001");
+		voList.add(vo);
+
+		vo = new ComDefaultCodeVO();
+		vo.setCodeId("COM003");
+		voList.add(vo);
+
+		Map<String, List<CmmnDetailCode>> selectCmmCodeDetails = null;
+
+		try {
+			selectCmmCodeDetails = egovCmmUseService.selectCmmCodeDetails(voList);
+		} catch (Exception e) {
+			LOGGER.error("e=" + e);
+		}
+
+		model.addAttribute("selectCmmCodeDetails", selectCmmCodeDetails);
 	}
 
 	@RequestMapping("/EgovLeft.do")
@@ -127,7 +180,7 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 			}
 			/* 여기까지 AOP Proxy로 인한 코드 */
 
-			/*@Controller Annotation 처리된 클래스를 모두 찾는다.*/
+			/* @Controller Annotation 처리된 클래스를 모두 찾는다. */
 			Map<String, Object> myZoos = applicationContext.getBeansWithAnnotation(Controller.class);
 			LOGGER.debug("How many Controllers : ", myZoos.size());
 			for (final Object myZoo : myZoos.values()) {
@@ -139,13 +192,15 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 					annotation = methods[i].getAnnotation(IncludedInfo.class);
 
 					if (annotation != null) {
-						//LOG.debug("Found @IncludedInfo Method : " + methods[i] );
+						// LOG.debug("Found @IncludedInfo Method : " +
+						// methods[i] );
 						zooVO = new IncludedCompInfoVO();
 						zooVO.setName(annotation.name());
 						zooVO.setOrder(annotation.order());
 						zooVO.setGid(annotation.gid());
 						/*
-						 * 목록형 조회를 위한 url 매핑은 @IncludedInfo나 @RequestMapping에서 가져온다
+						 * 목록형 조회를 위한 url 매핑은 @IncludedInfo나 @RequestMapping에서
+						 * 가져온다
 						 */
 						rmAnnotation = methods[i].getAnnotation(RequestMapping.class);
 						if ("".equals(annotation.listUrl())) {
@@ -161,7 +216,7 @@ public class EgovComIndexController implements ApplicationContextAware, Initiali
 		}
 
 		model.addAttribute("resultList", map.values());
-		
+
 		LOGGER.debug("EgovComIndexController index is called ");
 
 		return "egovframework/com/cmm/EgovUnitLeft";
