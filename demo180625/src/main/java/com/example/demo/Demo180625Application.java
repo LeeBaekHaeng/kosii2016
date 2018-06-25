@@ -7,10 +7,12 @@ import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import lombok.Data;
@@ -68,6 +70,28 @@ public class Demo180625Application {
 			// System.out.println("codeNm=" + result.getCodeNm());
 			// System.out.println("useAt=" + result.getUseAt());
 			// }
+		};
+	}
+
+	@Autowired
+	private Environment environment;
+
+	@Bean
+	public CommandLineRunner commandLineRunner2() {
+		return (args) -> {
+
+			String[] activeProfiles = environment.getActiveProfiles();
+			System.out.println("activeProfiles=" + activeProfiles);
+			for (String activeProfile : activeProfiles) {
+				System.out.println("activeProfile=" + activeProfile);
+			}
+
+			String[] defaultProfiles = environment.getDefaultProfiles();
+			System.out.println("defaultProfiles=" + defaultProfiles);
+			for (String defaultProfile : defaultProfiles) {
+				System.out.println("defaultProfile=" + defaultProfile);
+			}
+
 		};
 	}
 
