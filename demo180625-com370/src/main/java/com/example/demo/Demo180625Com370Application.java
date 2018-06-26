@@ -7,11 +7,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.example.demo.cmmnclcode.CmmnClCode;
 import com.example.demo.cmmnclcode.CmmnClCodeRepository;
 
 @SpringBootApplication
+@EnableJpaRepositories(repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class)
 public class Demo180625Com370Application {
 
 	public static void main(String[] args) {

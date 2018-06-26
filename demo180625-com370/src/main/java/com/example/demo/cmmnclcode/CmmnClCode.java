@@ -6,11 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 import lombok.Data;
 
 @Entity
 @Table(name = "comtccmmnclcode")
 @Data
+@Audited
 public class CmmnClCode {
 
 	@Id
