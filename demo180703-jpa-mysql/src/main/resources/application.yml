@@ -1,0 +1,44 @@
+spring:
+  jpa:
+    generate-ddl: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+---
+spring:
+  profiles: mysql
+  datasource:
+    url: "jdbc:mysql://localhost:3306/us_test180628_com370_obj"
+    driver-class-name: com.mysql.jdbc.Driver
+    username: us_test180628_com370_app
+    password: us_test180628_com370_app
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL55Dialect
+
+---
+spring:
+  profiles: postgres
+  datasource:
+    url: "jdbc:postgresql://localhost/music"
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.ProgressDialect
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace
