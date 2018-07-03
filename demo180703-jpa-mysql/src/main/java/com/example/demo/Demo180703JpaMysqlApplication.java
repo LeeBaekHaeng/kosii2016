@@ -7,11 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
 import lombok.Data;
 
@@ -22,7 +26,7 @@ public class Demo180703JpaMysqlApplication {
 		SpringApplication.run(Demo180703JpaMysqlApplication.class, args);
 	}
 
-	@Bean
+	// @Bean
 	public CommandLineRunner runner(CmmnClCodeRepository cmmnClCodeRepository) {
 		return args -> {
 			System.out.println("runner");
@@ -36,6 +40,15 @@ public class Demo180703JpaMysqlApplication {
 				System.out.println("getClCode=" + result.getClCode());
 				System.out.println("getClCodeNm=" + result.getClCodeNm());
 			});
+		};
+	}
+
+	@Bean
+	public CommandLineRunner runner2(CmmnClCodeService cmmnClCodeService) {
+		return args -> {
+			System.out.println("runner2");
+
+			cmmnClCodeService.findAll(null);
 		};
 	}
 
@@ -61,5 +74,25 @@ class CmmnClCode {
 interface CmmnClCodeRepository extends JpaRepository<CmmnClCode, String> {
 	// interface CmmnClCodeRepository extends CrudRepository<CmmnClCode, String>
 	// {
+
+}
+
+@Service
+class CmmnClCodeService {
+
+	@Autowired
+	private CmmnClCodeRepository cmmnClCodeRepository;
+
+	public void findAll(Sort sort2) {
+		// Sort sort = new Sort(Direction.DESC, "clCode");
+		Sort sort = new Sort(Direction.DESC, new String[] { "clCode", "clCodeNm" });
+		// sort.and(new Sort(Direction.ASC, "clCodeNm"));
+
+		List<CmmnClCode> findAll = cmmnClCodeRepository.findAll(sort);
+
+		findAll.forEach(result -> {
+			System.out.println("result=" + result);
+		});
+	}
 
 }
