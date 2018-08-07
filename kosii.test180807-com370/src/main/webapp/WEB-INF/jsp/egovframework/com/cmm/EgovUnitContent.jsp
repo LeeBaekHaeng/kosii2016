@@ -13,18 +13,24 @@
 	<li>${loginVO}</li>
 	<li>${loginVO.id}</li>
 	<li>${loginVO.name}</li>
+	<li>${loginVO.memo}</li>
+	<li>${loginVO.memo2}</li>
 </ol>
 
 <ol>
 	<li><c:out value="${loginVO}"></c:out></li>
 	<li><c:out value="${loginVO.id}"></c:out></li>
 	<li><c:out value="${loginVO.name}"></c:out></li>
+	<li><c:out value="${loginVO.memo}"></c:out></li>
+	<li><c:out value="${loginVO.memo2}"></c:out></li>
 </ol>
 
 <ol>
 	<li>${authenticatedUser}</li>
 	<li>${authenticatedUser.id}</li>
 	<li>${authenticatedUser.name}</li>
+	<li>${authenticatedUser.memo}</li>
+	<li>${authenticatedUser.memo2}</li>
 </ol>
 
 	<c:if test="${loginVO != null}">
