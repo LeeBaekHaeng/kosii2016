@@ -1,0 +1,173 @@
+BODY
+{
+	COLOR: #646464;
+	FONT-FAMILY: "돋움", "굴림", "Seoul", "arial", "helvetica";
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: none;
+	line-height: 1.5em;
+
+}
+
+.date {
+	font-family: "Tahoma";
+	font-size: 11px;
+	color: #6e8d83;
+}
+
+.open_menu {position:absolute; width:1200px; top:97px; margin:0; }
+
+IMG {border: none;}
+
+.board01 { font-family: 굴림; font-size: 11px; color: #666666;}
+A.board01:link {COLOR: #666666; TEXT-DECORATION: none; font-family: 굴림, seoul, arial; font-size: 11px; }
+A.board01:hover {COLOR: #1463b2; TEXT-DECORATION: none; font-family: 굴림, seoul, arial; font-size: 11px; }
+A.board01:visited {COLOR: #666666; TEXT-DECORATION: none; font-family: 굴림, seoul, arial; font-size: 11px; }
+A.board01:active {COLOR: #666666; TEXT-DECORATION: none; font-family: 굴림, seoul, arial; font-size: 11px; }
+
+.board02 { font-family: 굴림; font-size: 12px; color: #1b1b1b;}
+A.board02:white {COLOR: #1b1b1b; TEXT-DECORATION: none; font-family: 굴림, seoul, arial; font-size: 12px; }
+A.board02:link {COLOR: #1b1b1b; TEXT-DECORATION: none; font-family: 굴림, seoul, arial; font-size: 12px; }
+A.board02:hover {COLOR: #1b1b1b; TEXT-DECORATION: none; font-family: 굴림, seoul, arial; font-size: 12px; }
+A.board02:visited {COLOR: #1b1b1b; TEXT-DECORATION: none; font-family: 굴림, seoul, arial; font-size: 12px; }
+A.board02:active {COLOR: #1b1b1b; TEXT-DECORATION: none; font-family: 굴림, seoul, arial; font-size: 12px; }
+
+
+.navi_1{
+	font-family: "굴림";
+	font-size: 11pt;
+	color: #9c9c9c;	
+}
+
+.formbox {
+	border: 1px solid #7f9db9;
+	background-color: #FFFFFF;
+	font-family: "돋움";
+}
+
+.con2 {
+	font-family: "굴림";
+	font-size: 12px;
+	color: #646464;
+	line-height: 2.3em;
+}
+
+.con1 {
+	font-family: "굴림";
+	font-size: 16px;
+	color: #013f8e;
+	font-weight: bold;
+}
+
+#main {width:1200px; margin:0 auto;}
+
+.open_menu {position:absolute; width:1200px; top:97px; margin:0 auto;; }
+.paging_v2 a.on {
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background: #FFFFFF none repeat scroll 0 0;
+	border: 1px solid #4C77EB;
+	color: #4C77EB;
+	font-weight: bold;
+	letter-spacing: -1px;
+	padding: 2px 6px 2px 5px;
+	text-decoration: none;
+}
+
+.paging_v2 a:hover{
+	text-decoration: none;
+}
+
+.paging_v2 a.list:hover {
+	-moz-background-clip: border;
+	-moz-background-inline-policy: continuous;
+	-moz-background-origin: padding;
+	background: #FFFFFF none repeat scroll 0 0;
+	border: 1px solid #4C77EB;
+	color: #4C77EB;
+	font-family: Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	padding: 2px 6px 2px 5px;
+	text-decoration: none;
+}
+
+.paging_v2 a {
+	border: 1px solid #DDDDDD;
+	color: #585860;
+	display: inline-block;
+	font-family: Verdana;
+	font-size: 11px;
+	line-height: normal;
+	margin-right: 1px;
+	padding: 2px 6px;
+	position: relative;
+	text-decoration: none;
+}
+
+
+.paging_v2 {
+	clear: both;
+	display: block;
+	padding: 10px 0 0;
+	position: relative;
+	text-align: center;
+}
+
+.paging_v2 a.first {
+	border: medium none;
+	display: inline;
+	height: 8px;
+	padding: 2px 0;
+	text-align: left;
+	width: 9px;
+}
+
+.paging_v2 a.pre {
+	border: medium none;
+	display: inline;
+	height: 8px;
+	padding: 2px 0;
+	text-align: left;
+	width: 7px;
+}
+
+.paging_v2 a.next {
+	border: medium none;
+	display: inline;
+	height: 8px;
+	padding: 2px 0;
+	text-align: right;
+	width: 7px;
+}
+
+.paging_v2 a.end {
+	border: medium none;
+	display: inline;
+	height: 8px;
+	padding: 2px 0;
+	text-align: right;
+	width: 9px;
+}
+
+.paging_v2 a.first img {
+	margin: -1px 0 0 0;
+	border: 0 none;
+}
+
+.paging_v2 a.pre img {
+	margin: -1px 0 0;
+	border: 0 none;
+}
+
+.paging_v2 a.next img {
+	margin: -1px 0 0;
+	border: 0 none;
+}
+
+.paging_v2 a.end img {
+	margin: -1px 0 0;
+	border: 0 none;
+}
+	

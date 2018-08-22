@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="kosii.gh.pages"
+		template="/WEB-INF/jsp/kosii/com/layouts/gh-pages/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/kosii/com/layouts/gh-pages/header.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/jsp/kosii/com/layouts/gh-pages/menu.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/kosii/com/layouts/gh-pages/body.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/kosii/com/layouts/gh-pages/footer.jsp" />
+	</definition>
+
+	<definition name="kosii.sub"
+		template="/WEB-INF/jsp/kosii/com/layouts/sub/layout.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/kosii/com/layouts/sub/header.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/jsp/kosii/com/layouts/sub/menu.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/kosii/com/layouts/sub/body.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/kosii/com/layouts/sub/footer.jsp" />
+	</definition>
+
+	<definition name="kosii/com/main/*" extends="kosii.gh.pages">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/kosii/com/main/{1}.jsp" />
+	</definition>
+
+	<definition name="kosii/com/sub/*/*" extends="kosii.sub">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/kosii/com/sub/{1}/{2}.jsp" />
+	</definition>
+
+	<definition name="egovframework/com/cop/bbs/EgovNotice*"
+		extends="kosii.gh.pages">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/kosii/com/cop/bbs/EgovNotice{1}.jsp" />
+	</definition>
+
+</tiles-definitions>

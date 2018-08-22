@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* base */
+body {font-family:Malgun Gothic,dotum, "", sans-serif;  font-size:0.75em; color:#555;}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, address, big, cite, code,
+del, dfn, em, font, img, ins, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, 
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td, br {margin: 0; padding: 0; border:0;  line-height: 1.5em; }
+
+input, select { font-family:dotum, sans-serif; font-size:11px; color:#555; margin:0; padding:1px 0 1px 0 ;}
+
+li { list-style:none; text-align:justify;}
+p {text-align:justify;}
+
+
+a { text-decoration:none; color:#555; cursor:pointer;}
+a:hover { color:#000;}
+
+.Hidden {visibility:hidden; overflow:hidden; width:0; height:0; font-size:0; line-height:0; position:absolute;}
+
+
+input[type="file"] {height:19px;background-color:#fff; border:1px solid #d0d0cc;}
