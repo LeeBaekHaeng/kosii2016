@@ -46,4 +46,8 @@
 			value="/WEB-INF/jsp/kosii/com/cop/bbs/EgovNotice{1}.jsp" />
 	</definition>
 
+	<definition name="egovframework/com/uat/uia/EgovLoginUsr"
+		template="/WEB-INF/jsp/kosii/com/uat/uia/EgovLoginUsr.jsp">
+	</definition>
+
 </tiles-definitions>

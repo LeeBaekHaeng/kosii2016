@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -153,6 +154,9 @@ function login_check(){
        <li><a href="#" onClick="login_check()">인트라넷</a></li>
        <li><a href="http://webmail.kosii.or.kr/intro.php">웹메일</a></li>
        <li><a href="#">사이트맵</a></li>
+	<c:if test="${not empty loginVO.name}">
+		<li>${loginVO}${loginVO.name }님 환영합니다. <a href="${pageContext.request.contextPath }/uat/uia/actionLogout.do">로그아웃</a></li>
+	</c:if>
      </ul> 
 
 				
